@@ -1,0 +1,70 @@
+<h1 class="title">Category details</h1>
+
+<form #myForm="ngForm" (ngSubmit)="myForm.form.valid && onSubmit()">
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="name" class="col-form-label">Name</label>
+    </div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="category.name"
+        value=""
+        #nameModel="ngModel"
+        required
+        minlength="4"
+        [class.is-invalid]="nameModel.invalid && nameModel.touched"
+      />
+      @if (nameModel.invalid && nameModel.touched) {
+        <div class="text-danger small mt-1">
+          @if (nameModel.errors?.['required']) {
+            <div>The name is required.</div>
+          }
+          @if (nameModel.errors?.['minlength']) {
+            <div>The name must be at least 4 characters long.</div>
+          }
+        </div>
+      }
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="image" class="col-form-label">Image</label>
+    </div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        id="image"
+        name="image"
+        [(ngModel)]="category.image"
+        value=""
+        #imageModel="ngModel"
+        required
+        [class.is-invalid]="imageModel.invalid && imageModel.touched"
+      />
+      @if (imageModel.invalid && imageModel.touched) {
+        <div class="text-danger small mt-1">The image is required.</div>
+      }
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-3 btng">
+      <button type="submit" class="btn btn-primary me-3 btn-size" title="Save category">
+        <i class="bi bi-database-add"></i> Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary me-3 btn-size"
+        title="Back to list categories"
+        (click)="cancel()"
+      >
+        <i class="bi bi-backspace"></i> Cancel
+      </button>
+    </div>
+  </div>
+</form>

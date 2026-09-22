@@ -1,0 +1,146 @@
+<h1 class="title">Product details</h1>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="name" class="col-form-label">Title</label>
+    </div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="title"
+        [ngClass]="{
+          'is-invalid': pf['title'].invalid && (pf['title'].touched || submitted),
+        }"
+      />
+      @if (pf['title'].hasError('required')) {
+        <div class="invalid-feedback">El title del producto es requerido.</div>
+      }
+      @if (pf['title'].hasError('minlength')) {
+        <div class="invalid-feedback">
+          El title del producto debe tener como mínimo
+          {{ pf['title'].errors?.['minlength']?.requiredLength }}
+          caracteres.
+        </div>
+      }
+      @if (pf['title'].hasError('maxlength')) {
+        <div class="invalid-feedback">
+          El title del producto debe tener como máximo
+          {{ pf['title'].errors?.['maxlength']?.requiredLength }}
+          caracteres.
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="price" class="col-form-label">Price</label>
+    </div>
+    <div class="col-sm-6">
+      <input
+        type="text"
+        class="form-control"
+        id="price"
+        formControlName="price"
+        [ngClass]="{
+          'is-invalid': pf['price'].invalid && (pf['price'].touched || submitted),
+        }"
+      />
+      @if (pf['price'].hasError('required')) {
+        <div class="invalid-feedback">El price del producto es requerido.</div>
+      }
+      @if (pf['price'].hasError('min')) {
+        <div class="invalid-feedback">
+          El precio debe tener como valor mínimo
+          {{ pf['price'].errors?.['min']?.min  }}
+        </div>
+      }
+      @if (pf['price'].hasError('max')) {
+        <div class="invalid-feedback">
+          El precio debe tener como valor máximo
+          {{ pf['price'].errors?.['max']?.max }}
+        </div>
+      }
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="description" class="col-form-label">Description</label>
+    </div>
+    <div class="col-sm-6">
+      <textarea
+        cols="50"
+        rows="4"
+        class="form-control"
+        id="description"
+        formControlName="description"
+        [ngClass]="{
+          'is-invalid': pf['description'].invalid && (pf['description'].touched || submitted),
+        }"
+      ></textarea>
+      @if (pf['description'].hasError('required')) {
+        <div class="invalid-feedback">El description del producto es requerido.</div>
+      }
+      @if (pf['description'].hasError('minlength')) {
+        <div class="invalid-feedback">
+          El description del producto debe tener como mínimo
+          {{ pf['description'].errors?.['minlength']?.requiredLength }}
+          caracteres.
+        </div>
+      }
+      @if (pf['description'].hasError('maxlength')) {
+        <div class="invalid-feedback">
+          El description del producto debe tener como máximo
+          {{ pf['description'].errors?.['maxlength']?.requiredLength }}
+          caracteres.
+        </div>
+      }
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <div class="col-sm-2">
+      <label for="categoryId" class="col-form-label">Category</label>
+    </div>
+    <div class="col-sm-6">
+      <select
+        type="text"
+        class="form-control"
+        id="categoryId"
+        formControlName="categoryId"
+        [ngClass]="{
+          'is-invalid': pf['categoryId'].invalid && (pf['categoryId'].touched || submitted),
+        }"
+      >
+        <option value="" disabled selected>Selecciona una categoría</option>
+
+        <!-- Listado dinámico con la sintaxis de Angular moderna -->
+        @for (category of categories(); track category.id) {
+          <option [value]="category.id">{{ category.name }}</option>
+        }
+      </select>
+      @if (pf['title'].hasError('required')) {
+        <div class="invalid-feedback">El title del producto es requerido.</div>
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-3 btng">
+      <button type="submit" class="btn btn-primary me-3 btn-size" title="Save category">
+        <i class="bi bi-database-add"></i> Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary me-3 btn-size"
+        title="Back to list categories"
+        (click)="cancel()"
+      >
+        <i class="bi bi-backspace"></i> Cancel
+      </button>
+    </div>
+  </div>
+</form>

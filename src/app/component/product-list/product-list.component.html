@@ -1,0 +1,59 @@
+<h1 class="title">Product List</h1>
+
+<div class="row">
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4 btng">
+    <button
+      type="button"
+      class="btn btn-primary me-3 btn-size"
+      title="Search products"
+      (click)="getAll()"
+    >
+      <i class="bi bi-search"></i> Search
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary me-3 btn-size"
+      title="Register new product"
+      (click)="new()"
+    >
+      <i class="bi bi-folder-plus"></i> New
+    </button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table mt-2">
+      <thead>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Price</th>
+        <th scope="col">Category</th>
+        <th>Acction</th>
+      </thead>
+      <tbody>
+        @for (product of products(); track $index) {
+          <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.title }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.category?.name }}</td>
+            <td>
+              <button type="button" class="btn btn-success me-2" title="View product">
+                <i class="bi bi-binoculars"></i>
+              </button>
+              <button type="button" class="btn btn-info me-2" title="Edit product">
+                <i class="bi bi-pen"></i>
+              </button>
+              <button type="button" class="btn btn-warning me-2" title="Delete product">
+                <i class="bi bi-trash3"></i>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+
+      <tfoot></tfoot>
+    </table>
+  </div>
+</div>
