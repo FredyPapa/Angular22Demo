@@ -1,8 +1,8 @@
 export interface Category {
   id?: number
-  name: string
+  name?: string
   slug?: string
-  image: string
+  image?: string
   creationAt?: string
   updatedAt?: string
 }

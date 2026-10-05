@@ -15,6 +15,11 @@ export class ProductService {
         return this.http.get<Product[]>(this.uri)
     }
 
+    findById(id:number):Observable<Product>{
+        const uri_local = `${this.uri}/${id}`
+        return this.http.get<Product>(uri_local)
+    }
+
     save(product:Product):Observable<Product>{
         return this.http.post<Product>(this.uri,product)
     }

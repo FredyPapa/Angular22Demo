@@ -31,19 +31,19 @@
         <th>Acction</th>
       </thead>
       <tbody>
-        @for (category of categories(); track $index) {
+        @for (category of categoriesItems(); track category.id) {
           <tr>
             <td>{{ category.id }}</td>
             <td>{{ category.name }}</td>
             <td>{{ category.slug }}</td>
             <td>
-              <button type="button" class="btn btn-success me-2" title="View category">
+              <button type="button" class="btn btn-success me-2" title="View category" (click)="view(category,template)">
                 <i class="bi bi-binoculars"></i>
               </button>
               <button type="button" class="btn btn-info me-2" title="Edit category">
                 <i class="bi bi-pen"></i>
               </button>
-              <button type="button" class="btn btn-warning me-2" title="Delete category">
+              <button type="button" class="btn btn-warning me-2" title="Delete category" (click)="delete(category)">
                 <i class="bi bi-trash3"></i>
               </button>
             </td>
@@ -55,3 +55,37 @@
     </table>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xs-12 col-12">
+    <pagination [totalItems]="categories().length" [itemsPerPage]=itemsPerPage (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+  </div>
+</div>
+ 
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Modal</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card" style="width: 18rem">
+      <img
+        src="{{ categorySelected?.image }}"
+        class="card-img-top"
+        alt="{{ categorySelected?.name }}"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ categorySelected?.name }}</h5>
+        <p class="card-text">{{ categorySelected?.slug }}</p>
+        <a href="#" class="btn btn-primary">Go</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

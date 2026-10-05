@@ -7,5 +7,5 @@ export interface Product{
     description: string
     category?: Category
     categoryId?: number
-    images: string[]
+    images?: string[]
 }

@@ -32,7 +32,7 @@
         <th>Acction</th>
       </thead>
       <tbody>
-        @for (product of products(); track $index) {
+        @for (product of productsItems(); track $index) {
           <tr>
             <td>{{ product.id }}</td>
             <td>{{ product.title }}</td>
@@ -42,7 +42,7 @@
               <button type="button" class="btn btn-success me-2" title="View product">
                 <i class="bi bi-binoculars"></i>
               </button>
-              <button type="button" class="btn btn-info me-2" title="Edit product">
+              <button type="button" class="btn btn-info me-2" title="Edit product" (click)="edit(product)">
                 <i class="bi bi-pen"></i>
               </button>
               <button type="button" class="btn btn-warning me-2" title="Delete product">
@@ -55,5 +55,13 @@
 
       <tfoot></tfoot>
     </table>
+
+    <div class="row">
+      <div class="col-xs-12 col-12">
+        <pagination [totalItems]="products().length" [itemsPerPage]=itemsPerPage (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+      </div>
+    </div>
+    
   </div>
 </div>
+

@@ -114,7 +114,7 @@
           'is-invalid': pf['categoryId'].invalid && (pf['categoryId'].touched || submitted),
         }"
       >
-        <option value="" disabled selected>Selecciona una categoría</option>
+        <option value="" selected>Selecciona una categoría</option>
 
         <!-- Listado dinámico con la sintaxis de Angular moderna -->
         @for (category of categories(); track category.id) {

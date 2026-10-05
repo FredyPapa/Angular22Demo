@@ -27,6 +27,10 @@ export const routes: Routes = [
         component: ProductDetailsComponent
     },
     {
+        path: 'products/details/:id',
+        component: ProductDetailsComponent
+    },
+    {
         path: '**',
         redirectTo: '/home'
     }

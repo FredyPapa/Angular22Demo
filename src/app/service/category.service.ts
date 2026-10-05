@@ -17,8 +17,16 @@ export class CategoryService {
         return this.http.get<Category[]>(this.uri)
     }
 
+    findById(id:number):Observable<Category>{
+        return this.http.get<Category>(`${this.uri}/${id}`);
+    }
+
     save(category:Category):Observable<Category>{
-        return this.http.post<Category>(this.uri,category)
+        return this.http.post<Category>(this.uri,category);
+    }
+
+    delete(id?:number):Observable<any>{
+        return this.http.delete<any>(`${this.uri}/${id}`);
     }
 
 }
