@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { PageChangedEvent, PaginationModule } from 'ngx-bootstrap/pagination';
-import { GLOBAL } from '../../constants/global';
+import { GLOBAL } from '../../../../shared/constants/global';
 
 @Component({
   imports: [
@@ -41,7 +41,7 @@ export class CategoryListComponent implements OnInit {
   }
 
   new(){
-    this.router.navigate(['categories/details'])
+    this.router.navigate(['modules/categories/categories/details'])
   }
 
   getAll(){

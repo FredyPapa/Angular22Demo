@@ -2,7 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../model/product';
 import { ProductService } from '../../service/product.service';
 import { Router } from '@angular/router';
-import { GLOBAL } from '../../constants/global';
+import { GLOBAL } from '../../../../shared/constants/global';
 import { PageChangedEvent, PaginationModule } from 'ngx-bootstrap/pagination';
 
 @Component({
@@ -28,12 +28,12 @@ export class ProductListComponent implements OnInit {
   }
 
   new(){
-    this.router.navigate(['products/details'])
+    this.router.navigate(['modules/products/products/details'])
   }
 
   edit(product:Product){
     //console.log(product);
-    this.router.navigate(['products/details',product.id])
+    this.router.navigate(['modules/products/products/details',product.id])
     /*
     if(product.id){
       sessionStorage.setItem('id',String(product.id));

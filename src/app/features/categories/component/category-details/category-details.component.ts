@@ -63,7 +63,7 @@ export class CategoryDetailsComponent implements OnInit {
   
   cancel(){
     console.log('Cancel')
-    this.router.navigate(['categories'])
+    this.router.navigate(['modules/categories/categories'])
     
   }
 }

@@ -1,0 +1,21 @@
+<div class="dropdown">
+  <!-- Botón que activa el menú desplegable -->
+  <button
+    class="btn btn-primary dropdown-toggle"
+    type="button"
+    id="dropdownMenuButton"
+    data-bs-toggle="dropdown"
+    aria-expanded="false">
+    Opciones de Cuenta
+  </button>
+
+  <!-- Lista desplegable con 3 ítems -->
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#perfil">Mi Perfil</a></li>
+    <li><a class="dropdown-item" href="#configuracion">Configuración</a></li>
+    <li><hr class="dropdown-divider"></li> <!-- Separador visual opcional -->
+    <li><a class="dropdown-item text-danger" href="#salir">Cerrar Sesión</a></li>
+  </ul>
+</div>
+
+<router-outlet />

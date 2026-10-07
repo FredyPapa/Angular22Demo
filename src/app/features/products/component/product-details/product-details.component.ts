@@ -4,8 +4,8 @@ import { ProductService } from '../../service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../model/product';
 import { CommonModule } from '@angular/common';
-import { Category } from '../../model/category';
-import { CategoryService } from '../../service/category.service';
+import { Category } from '../../../categories/model/category';
+import { CategoryService } from '../../../categories/service/category.service';
 
 @Component({
   imports: [
@@ -64,7 +64,7 @@ export class ProductDetailsComponent {
     if(this.productForm.invalid){
       return;
     }
-    
+
     console.log(this.productForm)
 
     const category:Category = {id:0}
@@ -90,7 +90,7 @@ export class ProductDetailsComponent {
 
   cancel(){
     console.log('Cancel...');
-    this.router.navigate(['products']);
+    this.router.navigate(['modules/products/products']);
   }
 
   findById(id:number){

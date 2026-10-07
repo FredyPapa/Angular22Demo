@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Service } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../model/category';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Service()
 export class CategoryService {
